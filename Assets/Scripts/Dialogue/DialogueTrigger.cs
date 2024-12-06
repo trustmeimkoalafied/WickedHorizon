@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    [Header("Visual Cue")]
-    [SerializeField] private GameObject visualCue;
+	// to make visual cue show up when player is w/i box collider
+    [Header("Visual Cue")] // game object variable for visual cue
+    [SerializeField] private GameObject visualCue; // so it shows up in inspector
 
     [Header("Emote Animator")]
     [SerializeField] private Animator emoteAnimator;
@@ -13,20 +14,21 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
 
-    private bool playerInRange;
+    private bool playerInRange; // to keep track of if player is in range
 
     private void Awake() 
     {
         playerInRange = false;
-        visualCue.SetActive(false);
+        visualCue.SetActive(false); // visual cue inactive at start of game, so hidden
     }
 
+	// whether or not to show a visual cue
     private void Update() 
     {
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying) 
         {
             visualCue.SetActive(true);
-            if (InputManager.GetInstance().GetInteractPressed()) 
+            if (InputManager.GetInstance().GetInteractPressed()) // check if player has pressed interact button
             {
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON, emoteAnimator);
             }
@@ -36,15 +38,17 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(false);
         }
     }
-
+	
+	// to detect when another collider enters collider of game object
     private void OnTriggerEnter2D(Collider2D collider) 
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player") // check that its player and not something like the ground
         {
             playerInRange = true;
         }
     }
 
+	// to detect when another collider exits collider of game object
     private void OnTriggerExit2D(Collider2D collider) 
     {
         if (collider.gameObject.tag == "Player")
