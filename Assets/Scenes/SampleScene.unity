@@ -350,6 +350,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 880327923}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &75427204
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -449,6 +454,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 818555432}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!82 &79884473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -849,6 +859,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 1569697628}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &202630227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1102,6 +1117,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 1239548922}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &255386822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1798,7 +1818,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &448903558
 SpriteRenderer:
@@ -2014,7 +2034,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &508940934
 GameObject:
@@ -2229,7 +2249,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &622249444
 SpriteRenderer:
@@ -2857,7 +2877,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &700417889
 SpriteRenderer:
@@ -3171,7 +3191,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &733448217
 SpriteRenderer:
@@ -3324,6 +3344,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 79884470}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!82 &818555435
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3563,6 +3588,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 995955974}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &853250765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3927,6 +3957,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 75427201}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &880327926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4186,7 +4221,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &995955975
 AudioSource:
@@ -4297,6 +4332,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 853250762}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &995955977
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4353,7 +4393,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &997683570
 SpriteRenderer:
@@ -4708,7 +4748,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1127557304
 SpriteRenderer:
@@ -4792,7 +4832,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1129442248
 SpriteRenderer:
@@ -4876,7 +4916,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1171087337
 SpriteRenderer:
@@ -5256,7 +5296,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1228118684
 SpriteRenderer:
@@ -5453,6 +5493,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 255386819}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &1239548925
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5674,7 +5719,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1270861685
 SpriteRenderer:
@@ -5784,7 +5829,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1272090236
 SpriteRenderer:
@@ -5868,7 +5913,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1284513094
 SpriteRenderer:
@@ -6030,7 +6075,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1306096549
 SpriteRenderer:
@@ -6904,6 +6949,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 1508233652}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &1415932452
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7453,6 +7503,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 1415932449}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &1508233655
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8140,6 +8195,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 202630224}
+  isLocked: 0
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 0}
+  visualCuePrefab: {fileID: 0}
 --- !u!61 &1569697631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8644,7 +8704,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1752039262
 SpriteRenderer:
@@ -8829,6 +8889,180 @@ BoxCollider2D:
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!1 &1804296756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804296757}
+  - component: {fileID: 1804296760}
+  - component: {fileID: 1804296759}
+  - component: {fileID: 1804296758}
+  m_Layer: 0
+  m_Name: FINALDOOR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1804296757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804296756}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.27, y: 3, z: -0.04670637}
+  m_LocalScale: {x: 0.7310092, y: 0.75046, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2131572087}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1804296758
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804296756}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c3f116c86547e244d8a38189964fd972, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1804296759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804296756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e705d9b780adc4b8f494fa43e20f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetDoor: {fileID: 1239548922}
+  isLocked: 1
+  lockVisualCue: {fileID: 0}
+  unlockSound: {fileID: 0}
+  visualCueSprite: {fileID: 21300000, guid: 403cadadf3b01964c83a19719304bb51, type: 3}
+  visualCuePrefab: {fileID: 0}
+--- !u!61 &1804296760
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804296756}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -9085,7 +9319,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2131572087}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1896653430
 SpriteRenderer:
@@ -10192,6 +10426,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1804296757}
   - {fileID: 995955974}
   - {fileID: 485639611}
   - {fileID: 1752039261}
