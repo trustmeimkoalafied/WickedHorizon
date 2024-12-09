@@ -49,6 +49,7 @@ public class DialogueManager : MonoBehaviour
 
     private DialogueVariables dialogueVariables;
     private InkExternalFunctions inkExternalFunctions;
+    private GameObject currentNpc; // To store the current NPC GameObject
 
     private void Awake() 
     {
@@ -75,6 +76,9 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
+	// Initialize the Ink story from load_globals.ink.json, which includes globals.ink
+    	Story loadGlobalsStory = new Story(loadGlobalsJSON.text);
+
         // get the layout animator
         layoutAnimator = dialoguePanel.GetComponent<Animator>();
 
@@ -89,6 +93,54 @@ public class DialogueManager : MonoBehaviour
 
         InitializeAudioInfoDictionary();
     }
+
+public DialogueVariables GetDialogueVariables()
+{
+	return dialogueVariables;
+}
+
+
+public Story GetCurrentStory() 
+{
+    return currentStory;
+}
+
+
+private void CheckNpcCollection()
+{
+    	// Check if the player has collected Alex
+    	if (GetNpcCollectionStatus("alexInteracted"))
+    	{
+        	GameObject Alex = GameObject.Find("Alex");
+        	if (Alex != null) Alex.SetActive(false); // or Destroy(Alex);
+    	}
+
+    	// Check if the player has collected Liam
+    	if (GetNpcCollectionStatus("liamInteracted"))
+	{
+        	GameObject Liam = GameObject.Find("Liam");
+        	if (Liam != null) Liam.SetActive(false); // or Destroy(Liam);
+    	}
+
+    	// Check if the player has collected Jade
+    	if (GetNpcCollectionStatus("jadeInteracted"))
+    	{
+        	GameObject Jade = GameObject.Find("Jade");
+        	if (Jade != null) Jade.SetActive(false); // or Destroy(Jade);
+    	}
+}
+
+private bool GetNpcCollectionStatus(string npcVariable)
+{
+    	// Get the value of the variable from Ink
+    	Ink.Runtime.Object npcStatus = currentStory.variablesState.GetVariableWithName(npcVariable);
+    	Debug.Log($"NPC {npcVariable} status: {npcStatus}");
+
+    	// Check if the npcStatus is not null and equals 1 (i.e., the player has interacted with the NPC)
+    	return npcStatus != null && npcStatus.Equals(new Ink.Runtime.IntValue(1));
+}
+
+
 
     private void InitializeAudioInfoDictionary() 
     {
@@ -124,74 +176,108 @@ public class DialogueManager : MonoBehaviour
 
         // handle continuing to the next line in the dialogue when submit is pressed
         // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
-        if (canContinueToNextLine 
-            && currentStory.currentChoices.Count == 0 
-            && InputManager.GetInstance().GetSubmitPressed())
+        if (canContinueToNextLine && currentStory.currentChoices.Count == 0 && InputManager.GetInstance().GetSubmitPressed())
         {
             ContinueStory();
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON, Animator emoteAnimator) 
+public void EnterDialogueMode(TextAsset inkJSON, Animator emoteAnimator, GameObject npcGameObject) 
+{
+    currentStory = new Story(inkJSON.text);
+    currentNpc = npcGameObject;
+    dialogueIsPlaying = true;
+    dialoguePanel.SetActive(true);
+
+    dialogueVariables.StartListening(currentStory);
+    inkExternalFunctions.Bind(currentStory, emoteAnimator);
+
+    // Store the NPC GameObject reference for later
+    DialogueTrigger npcTrigger = npcGameObject.GetComponent<DialogueTrigger>();
+    if (npcTrigger != null)
     {
-        currentStory = new Story(inkJSON.text);
-        dialogueIsPlaying = true;
-        dialoguePanel.SetActive(true);
-
-        dialogueVariables.StartListening(currentStory);
-        inkExternalFunctions.Bind(currentStory, emoteAnimator);
-
-        // reset portrait, layout, and speaker
-        displayNameText.text = "???";
-        portraitAnimator.Play("default");
-        layoutAnimator.Play("right");
-
-        ContinueStory();
+        npcTrigger.SetNpcGameObject(npcGameObject);
     }
 
-    private IEnumerator ExitDialogueMode() 
+    // reset portrait, layout, and speaker
+    displayNameText.text = "???";
+    portraitAnimator.Play("default");
+    layoutAnimator.Play("right");
+
+    ContinueStory();
+}
+
+
+
+
+private IEnumerator ExitDialogueMode()
+{
+    yield return new WaitForSeconds(0.2f);
+
+    dialogueVariables.StopListening(currentStory);
+    inkExternalFunctions.Unbind(currentStory);
+
+    dialogueIsPlaying = false;
+    dialoguePanel.SetActive(false);
+    dialogueText.text = "";
+
+    // Trigger the NPC check when the dialogue ends
+    DialogueTrigger currentNpcTrigger = currentNpc.GetComponent<DialogueTrigger>();
+    if (currentNpcTrigger != null)
     {
-        yield return new WaitForSeconds(0.2f);
-
-        dialogueVariables.StopListening(currentStory);
-        inkExternalFunctions.Unbind(currentStory);
-
-        dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
-        dialogueText.text = "";
-
-        // go back to default audio
-        SetCurrentAudioInfo(defaultAudioInfo.id);
+        currentNpcTrigger.TriggerOnDialogueFinished();
     }
 
-    private void ContinueStory() 
-    {
-        if (currentStory.canContinue) 
-        {
-            // set text for the current dialogue line
-            if (displayLineCoroutine != null) 
-            {
-                StopCoroutine(displayLineCoroutine);
-            }
-            string nextLine = currentStory.Continue();
-            // handle case where the last line is an external function
-            if (nextLine.Equals("") && !currentStory.canContinue)
-            {
-                StartCoroutine(ExitDialogueMode());
-            }
-            // otherwise, handle the normal case for continuing the story
-            else 
-            {
-                // handle tags
-                HandleTags(currentStory.currentTags);
-                displayLineCoroutine = StartCoroutine(DisplayLine(nextLine));
-            }
-        }
-        else 
-        {
-            StartCoroutine(ExitDialogueMode());
-        }
-    }
+    CheckNpcCollection();
+
+    // go back to default audio
+    SetCurrentAudioInfo(defaultAudioInfo.id);
+}
+
+
+private void OnDialogueFinished()
+{
+    // Now that the dialogue has finished, check if the NPC should disappear
+    CheckNpcCollection();
+}
+
+    	private void ContinueStory()
+	{
+    		if (currentStory.canContinue) 
+    		{
+        	string nextLine = currentStory.Continue();
+
+        		if (nextLine.Equals("") && !currentStory.canContinue)
+        			{
+            				StartCoroutine(ExitDialogueMode());
+            
+            				// Disable NPC after dialogue ends
+					if (currentNpc != null)
+					{
+    						DialogueTrigger dialogueTrigger = currentNpc.GetComponent<DialogueTrigger>();
+    						if (dialogueTrigger != null)
+    						{
+        						string npcName = currentNpc.name; // Get the name of the NPC GameObject
+        						dialogueTrigger.DisableNPC(npcName); // Pass the npcName to DisableNPC
+    						}
+					}
+
+        			}
+        		else 
+        		{
+            			// Handle tags and continue dialogue
+            			HandleTags(currentStory.currentTags);
+            			displayLineCoroutine = StartCoroutine(DisplayLine(nextLine));
+        		}
+    		}
+    		else 
+    		{
+        		StartCoroutine(ExitDialogueMode());
+    		}
+	}
+
+
+
 
     private IEnumerator DisplayLine(string line) 
     {
@@ -399,11 +485,11 @@ public class DialogueManager : MonoBehaviour
         return variableValue;
     }
 
-    // This method will get called anytime the application exits.
-    // Depending on your game, you may want to save variable state in other places.
-    public void OnApplicationQuit() 
-    {
-        dialogueVariables.SaveVariables();
-    }
-
+// This method will get called anytime the application exits.
+// Depending on your game, you may want to save variable state in other places.
+public void OnApplicationQuit() 
+{
+	dialogueVariables.SaveVariables();
 }
+}
+

@@ -45,4 +45,10 @@ cannibal? I don't want to die...
         Do you believe in the Boogie Man too, Liam? There's no way something like that exists. And we already knew this
         guy was crazy, let's not stick around to see if he takes a bite out of us. You coming?
 - Right behind you. I trust you. YOUR CURRENT EVIL LEVEL: {evilCounter} #speaker:Liam #layout:left #audio:animal_crossing_mid
+~ liamInteracted = 1
+-> checks
+
+=== checks ===
+YOUR CURRENT EVIL LEVEL: {evilCounter} #speaker:Alex #layout:left #audio:animal_crossing_mid
+YOUR CURRENT LIAM VARIABLE: {liamInteracted}
 -> END
