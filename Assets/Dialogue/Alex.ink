@@ -1,23 +1,39 @@
 INCLUDE globals.ink
 
-Alex! You’re alright. Let’s get out of here. #speaker:You #layout:left #audio:animal_crossing_mid
+Alex! You’re alright. Let’s get out of here. #speaker:You #layout:left #audio:celeste_low
 -> main
 
 === main ===
-Yeah… yeah, let’s go. But… What's going on here? This whole place feels wrong. #speaker:Alex #layout:left #audio:animal_crossing_mid
+#speaker:Alex #layout:left #audio:animal_crossing_mid
+Yeah… yeah, I guess I am. For a minute there I thought he would hurt me. He seems so convinced that one
+of us is a monster. He used these silver chains to lock me up and seemed surprised I didn't start to burn.
+I'm just glad you're here now. Could you help me out?
+<i>Clink.</i> #speaker:Chains #audio:beep_3
+Thanks... Oh god, what happened to your wrists? #speaker:Alex #layout:left #audio:animal_crossing_mid
     * [Reassure him]
-        I know. Trust me, I feel it too. #speaker:You #layout:left #audio:animal_crossing_mid
+        #speaker:You #layout:left #audio:celeste_low
+        He put my cuffs on really tight and now they're sore. I'm glad he didn't hurt you Alex. We're going to find a way out,
+        together.
+        We have to get you some ointment after we escape. Thank you for coming to get me. #speaker:Alex #layout:left #audio:animal_crossing_mid
         -> note
-    * [We need to leave-- wrap this up]
-        Alex, there's no time to waste. We have to find a way out. #speaker:You #layout:left #audio:animal_crossing_mid
+    * [Reprimand him]
+        ~ evilCounter += 1
+        #speaker:You #layout:left #audio:celeste_low
+        How about you grill me about what this psycho did to me later? Good for you that nothing happened, but I wasn't so
+        lucky.
+        I'm sorry, I really didn't mean it like that. #speaker:Alex #layout:left #audio:animal_crossing_mid
         -> note
 
 === note ===
-No… I mean, I was trying to find my way out but only found this note: #speaker:Alex #layout:left #audio:animal_crossing_mid
-<b><color=\#FF1E35>“It is clever, it has learned to hide among them, mimicking their every move. I cannot let it continue, not when I am so close-I will be ready.”</color></b> #speaker:Alex #layout:left #audio:animal_crossing_mid
-    * Sounds like he is chasing something he doesn’t understand. Regardless, we have to keep moving, we’ll be out of here soon. #speaker:You #layout:left #audio:animal_crossing_mid
-        -> DONE
-    * Why are you fooling around and reading random scraps of paper? It doesn't matter, let's go. #speaker:You #layout:left #audio:animal_crossing_mid
-        -> DONE
-- Alright… I’ll follow you, but… let’s be careful. #speaker:Alex #layout:left #audio:animal_crossing_mid
+Hey, I did find this weird note under the tub: #speaker:Alex #layout:left #audio:animal_crossing_mid
+<color=\#FF1E35>“It is clever, it has learned to hide among them, mimicking their every move. I cannot let it</color>
+<color=\#FF1E35>continue, not when I am so close-I will be ready.”</color>
+    * [Consider it]
+        #speaker:You #layout:left #audio:celeste_low
+        Sounds like he is chasing something he doesn’t fully understand. Regardless, we have to keep moving,
+        we’ll be out of here soon.
+    * [Blow it off]
+        ~ evilCounter += 1
+        Are we listening to crazy people and their rants now? We're wasting time when we could be leaving. Let's go. #speaker:You #layout:left #audio:celeste_low
+- Alright… I’ll follow you, but… let’s be careful. YOUR CURRENT EVIL LEVEL: {evilCounter} #speaker:Alex #layout:left #audio:animal_crossing_mid
 -> END

@@ -1,3 +1,2 @@
-VAR pokemon_name = ""
-
-EXTERNAL playEmote(emoteName)
+// Globals.ink
+VAR evilCounter = 0
