@@ -14,12 +14,11 @@ public class StalkerBehavior : MonoBehaviour
     [SerializeField] private float detectionRange = 5f;
     [SerializeField] private float wanderSpeed = 2f;
     [SerializeField] private float chaseSpeed = 4f;
-    [SerializeField] private Transform[] waypoints;
     [SerializeField] private GameObject[] restrictedDoors;
 
-    private int currentWaypointIndex = 0;
     private StalkerState currentState = StalkerState.Wandering;
 
+    private Vector2 wanderDirection = Vector2.left; // Initial wander direction (to the right)
     private DialogueManager dialogueManager;  // Reference to the DialogueManager
 
     private void Start()
@@ -55,15 +54,33 @@ public class StalkerBehavior : MonoBehaviour
         }
     }
 
-    private void Wander()
-    {
-        Transform targetWaypoint = waypoints[currentWaypointIndex];
-        MoveTowards(targetWaypoint.position, wanderSpeed);
+private void Wander()
+{
+    // Move in the current direction
+    MoveInDirection(wanderDirection, wanderSpeed);
 
-        if (Vector2.Distance(transform.position, targetWaypoint.position) < 0.2f)
-        {
-            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
-        }
+    // Raycast to detect if there's an obstacle in front, but cast the ray slightly later
+    float raycastDistance = 1f; // The distance of the raycast itself
+    float offset = 0.3f;  // This offset ensures the raycast is closer to the Stalker, giving more time to react
+    
+    // Calculate the raycast origin slightly ahead in the movement direction
+    Vector2 raycastOrigin = (Vector2)transform.position + wanderDirection.normalized * offset;
+
+    // Perform the raycast to detect obstacles
+    RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, wanderDirection, raycastDistance, LayerMask.GetMask("Obstacle"));
+    
+    if (hit.collider != null)
+    {
+        // Reverse direction only when an obstacle is detected
+        wanderDirection = -wanderDirection;
+    }
+}
+
+
+    private void MoveInDirection(Vector2 direction, float speed)
+    {
+        // Move the stalker in the given direction
+        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, speed * Time.deltaTime);
     }
 
     private void CheckForPlayer()
@@ -95,20 +112,21 @@ public class StalkerBehavior : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+private void OnTriggerEnter2D(Collider2D other)
+{
+    if (other.CompareTag("Door") && !IsRestrictedDoor(other.gameObject) && currentState != StalkerState.Chasing)
     {
-        if (other.CompareTag("Door") && !IsRestrictedDoor(other.gameObject))
+        if (Random.Range(0f, 1f) > 0.5f)
         {
-            if (Random.Range(0f, 1f) > 0.5f)
+            Door doorScript = other.GetComponent<Door>();
+            if (doorScript != null && !doorScript.IsLocked())
             {
-                Door doorScript = other.GetComponent<Door>();
-                if (doorScript != null && !doorScript.IsLocked())
-                {
-                    StartCoroutine(TeleportWithCooldown(doorScript));
-                }
+                StartCoroutine(TeleportWithCooldown(doorScript));
             }
         }
     }
+}
+
 
     private IEnumerator TeleportWithCooldown(Door door)
     {
