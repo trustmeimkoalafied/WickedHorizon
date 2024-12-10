@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 158013055}
   m_Layer: 0
   m_Name: Stalker
-  m_TagString: Player
+  m_TagString: Stalker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1537,7 +1537,7 @@ GameObject:
   - component: {fileID: 364125652}
   - component: {fileID: 364125653}
   - component: {fileID: 364125654}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LWallB
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2127,7 +2127,7 @@ GameObject:
   - component: {fileID: 485639611}
   - component: {fileID: 485639610}
   - component: {fileID: 485639609}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2474,7 +2474,7 @@ GameObject:
   - component: {fileID: 639044145}
   - component: {fileID: 639044146}
   - component: {fileID: 639044147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LWallA
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2674,7 +2674,7 @@ GameObject:
   - component: {fileID: 689504024}
   - component: {fileID: 689504023}
   - component: {fileID: 689504022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3336,7 +3336,7 @@ GameObject:
   - component: {fileID: 733448216}
   - component: {fileID: 733448217}
   - component: {fileID: 733448218}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RWall2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3881,7 +3881,7 @@ GameObject:
   - component: {fileID: 872095689}
   - component: {fileID: 872095690}
   - component: {fileID: 872095691}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RWall3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4204,7 +4204,7 @@ GameObject:
   - component: {fileID: 907490047}
   - component: {fileID: 907490046}
   - component: {fileID: 907490045}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FloorA
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4711,7 +4711,7 @@ GameObject:
   - component: {fileID: 1113529053}
   - component: {fileID: 1113529054}
   - component: {fileID: 1113529055}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LWall3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5150,7 +5150,7 @@ GameObject:
   - component: {fileID: 1188271708}
   - component: {fileID: 1188271709}
   - component: {fileID: 1188271710}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MWall3Grn
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5705,7 +5705,7 @@ GameObject:
   - component: {fileID: 1261581314}
   - component: {fileID: 1261581316}
   - component: {fileID: 1261581315}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FloorB
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5869,7 +5869,7 @@ GameObject:
   - component: {fileID: 1270861684}
   - component: {fileID: 1270861685}
   - component: {fileID: 1270861686}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MWall2Gry
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -6310,7 +6310,7 @@ GameObject:
   - component: {fileID: 1339491064}
   - component: {fileID: 1339491065}
   - component: {fileID: 1339491066}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RWallB
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -6555,7 +6555,7 @@ GameObject:
   - component: {fileID: 1349123461}
   - component: {fileID: 1349123460}
   - component: {fileID: 1349123459}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -7297,7 +7297,7 @@ GameObject:
   - component: {fileID: 1485525489}
   - component: {fileID: 1485525490}
   - component: {fileID: 1485525491}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MWall3Brwn
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -8388,7 +8388,7 @@ GameObject:
   - component: {fileID: 1584900534}
   - component: {fileID: 1584900535}
   - component: {fileID: 1584900536}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LWall1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -8700,7 +8700,7 @@ GameObject:
   - component: {fileID: 1752039261}
   - component: {fileID: 1752039262}
   - component: {fileID: 1752039263}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LWall2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -8811,7 +8811,7 @@ GameObject:
   - component: {fileID: 1803958242}
   - component: {fileID: 1803958243}
   - component: {fileID: 1803958244}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RWall1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -9327,7 +9327,7 @@ GameObject:
   - component: {fileID: 1896653429}
   - component: {fileID: 1896653430}
   - component: {fileID: 1896653431}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MWall2Brwn
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -9479,7 +9479,7 @@ GameObject:
   - component: {fileID: 1925176087}
   - component: {fileID: 1925176086}
   - component: {fileID: 1925176085}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: You
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -9546,7 +9546,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925176081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.07, y: -3.77, z: 0}
+  m_LocalPosition: {x: -7.07, y: 7.01, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9666,7 +9666,7 @@ GameObject:
   - component: {fileID: 1954804501}
   - component: {fileID: 1954804502}
   - component: {fileID: 1954804503}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RWallA
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -10087,7 +10087,7 @@ GameObject:
   - component: {fileID: 2074730183}
   - component: {fileID: 2074730182}
   - component: {fileID: 2074730185}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Roof
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -10653,7 +10653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4037660506031362396, guid: aea4bb20ee5966449907efea174cfcf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.36
+      value: -5.86
       objectReference: {fileID: 0}
     - target: {fileID: 4037660506031362396, guid: aea4bb20ee5966449907efea174cfcf6, type: 3}
       propertyPath: m_LocalPosition.y

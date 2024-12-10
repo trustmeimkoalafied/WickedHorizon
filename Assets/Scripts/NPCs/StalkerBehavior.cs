@@ -1,8 +1,8 @@
 using UnityEngine;
+using System.Collections;
 
 public class StalkerBehavior : MonoBehaviour
 {
-    // Define the StalkerState enum at the beginning of the script
     private enum StalkerState
     {
         Wandering,
@@ -15,27 +15,43 @@ public class StalkerBehavior : MonoBehaviour
     [SerializeField] private float wanderSpeed = 2f;
     [SerializeField] private float chaseSpeed = 4f;
     [SerializeField] private Transform[] waypoints;
-    [SerializeField] private GameObject[] restrictedDoors;  // Array of GameObjects for restricted doors
+    [SerializeField] private GameObject[] restrictedDoors;
 
     private int currentWaypointIndex = 0;
     private StalkerState currentState = StalkerState.Wandering;
 
+    private DialogueManager dialogueManager;  // Reference to the DialogueManager
+
+    private void Start()
+    {
+        dialogueManager = DialogueManager.GetInstance(); // Get the DialogueManager instance
+    }
+
     private void Update()
     {
-        switch (currentState)
+        // If dialogue is playing, set the state to Idle
+        if (dialogueManager.dialogueIsPlaying)
         {
-            case StalkerState.Wandering:
-                Wander();
-                CheckForPlayer();
-                break;
+            currentState = StalkerState.Idle;
+        }
+        else
+        {
+            // Handle regular behavior based on current state
+            switch (currentState)
+            {
+                case StalkerState.Wandering:
+                    Wander();
+                    CheckForPlayer();
+                    break;
 
-            case StalkerState.Chasing:
-                ChasePlayer();
-                break;
+                case StalkerState.Chasing:
+                    ChasePlayer();
+                    break;
 
-            case StalkerState.Idle:
-                // Could implement idle behavior here
-                break;
+                case StalkerState.Idle:
+                    // Idle behavior (can add animations or other logic here)
+                    break;
+            }
         }
     }
 
@@ -54,7 +70,13 @@ public class StalkerBehavior : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, player.position) <= detectionRange)
         {
-            currentState = StalkerState.Chasing;
+            Vector2 directionToPlayer = (player.position - transform.position).normalized;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, detectionRange, LayerMask.GetMask("Obstacle"));
+
+            if (hit.collider == null)
+            {
+                currentState = StalkerState.Chasing;
+            }
         }
     }
 
@@ -77,8 +99,22 @@ public class StalkerBehavior : MonoBehaviour
     {
         if (other.CompareTag("Door") && !IsRestrictedDoor(other.gameObject))
         {
-            // Use the door (implement door logic here)
+            if (Random.Range(0f, 1f) > 0.5f)
+            {
+                Door doorScript = other.GetComponent<Door>();
+                if (doorScript != null && !doorScript.IsLocked())
+                {
+                    StartCoroutine(TeleportWithCooldown(doorScript));
+                }
+            }
         }
+    }
+
+    private IEnumerator TeleportWithCooldown(Door door)
+    {
+        Vector3 targetPosition = door.targetDoor.position;
+        transform.position = targetPosition;
+        yield return new WaitForSeconds(0.5f);
     }
 
     private bool IsRestrictedDoor(GameObject door)
@@ -88,5 +124,11 @@ public class StalkerBehavior : MonoBehaviour
             if (door == restrictedDoor) return true;
         }
         return false;
+    }
+
+    // New method to be called when dialogue ends
+    public void OnDialogueEnded()
+    {
+        currentState = StalkerState.Wandering;  // Return to wandering state after dialogue
     }
 }

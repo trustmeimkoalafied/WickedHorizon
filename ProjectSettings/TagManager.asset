@@ -6,14 +6,15 @@ TagManager:
   tags:
   - Door
   - Obstacle
+  - Stalker
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstacle
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

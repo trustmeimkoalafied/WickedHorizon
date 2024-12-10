@@ -244,6 +244,20 @@ private IEnumerator ExitDialogueMode()
         SceneManager.LoadScene("GameOver");
     }
 
+    // Check if the stalker should resume wandering after dialogue ends
+    
+    // Ensure currentNpc references the Stalker before triggering its behavior
+    GameObject stalkerObject = GameObject.FindWithTag("Stalker"); // Assuming Stalker NPC has the tag "Stalker"
+    if (stalkerObject != null)
+    {
+        currentNpc = stalkerObject;
+        StalkerBehavior stalkerBehavior = currentNpc.GetComponent<StalkerBehavior>();
+        if (stalkerBehavior != null)
+        {
+            stalkerBehavior.OnDialogueEnded(); // This will return the Stalker to wandering state
+        }
+    }
+
     // go back to default audio
     SetCurrentAudioInfo(defaultAudioInfo.id);
 }

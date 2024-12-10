@@ -194,4 +194,10 @@ public class Door : MonoBehaviour
             Destroy(instantiatedCue);
         }
     }
+
+public bool IsLocked() 
+{
+    return isLocked;
+}
+
 }
