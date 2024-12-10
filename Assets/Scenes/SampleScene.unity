@@ -351,10 +351,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 880327923}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &75427204
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -455,10 +455,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 818555432}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!82 &79884473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -860,10 +860,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 1569697628}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &202630227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -920,7 +920,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &220193981
 SpriteRenderer:
@@ -1006,7 +1006,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &255386820
 AudioSource:
@@ -1118,10 +1118,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 1239548922}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &255386822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1507,7 +1507,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &364318870
 SpriteRenderer:
@@ -1650,7 +1650,7 @@ GameObject:
   - component: {fileID: 446613294}
   - component: {fileID: 446613293}
   m_Layer: 0
-  m_Name: door
+  m_Name: doorImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1715,13 +1715,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446613292}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.29, y: 0.13, z: 0}
   m_LocalScale: {x: 4.9228125, y: 4.9228125, z: 4.9228125}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1508321849}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &448415324
 GameObject:
@@ -2576,7 +2576,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &692236091
 GameObject:
@@ -3303,7 +3303,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &818555433
 BoxCollider2D:
@@ -3345,10 +3345,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 79884470}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!82 &818555435
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3477,7 +3477,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &853250763
 AudioSource:
@@ -3589,10 +3589,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 995955974}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &853250765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3649,7 +3649,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &862342067
 SpriteRenderer:
@@ -3846,7 +3846,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &880327924
 AudioSource:
@@ -3958,10 +3958,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 75427201}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &880327926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4333,10 +4333,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 853250762}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &995955977
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5494,10 +5494,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 255386819}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &1239548925
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6838,7 +6838,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1415932450
 AudioSource:
@@ -6950,10 +6950,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 1508233652}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &1415932452
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7504,10 +7504,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 1415932449}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &1508233655
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7562,6 +7562,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 446613294}
   - {fileID: 818555432}
   - {fileID: 880327923}
   - {fileID: 255386819}
@@ -7609,7 +7610,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1516251726
 SpriteRenderer:
@@ -8196,10 +8197,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDoor: {fileID: 202630224}
   isLocked: 0
-  lockVisualCue: {fileID: 0}
   unlockSound: {fileID: 0}
+  isSpecialDoor: 0
   visualCueSprite: {fileID: 0}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: EndingScene
 --- !u!61 &1569697631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8392,7 +8393,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1584900535
 SpriteRenderer:
@@ -8815,7 +8816,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1803958243
 SpriteRenderer:
@@ -9037,12 +9038,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e705d9b780adc4b8f494fa43e20f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDoor: {fileID: 1239548922}
+  targetDoor: {fileID: 0}
   isLocked: 1
-  lockVisualCue: {fileID: 0}
-  unlockSound: {fileID: 0}
+  unlockSound: {fileID: 8300000, guid: 4c2ccf30706b08d4f9d3ed6299d4739a, type: 3}
+  isSpecialDoor: 1
   visualCueSprite: {fileID: 21300000, guid: 403cadadf3b01964c83a19719304bb51, type: 3}
-  visualCuePrefab: {fileID: 0}
+  endingSceneName: ending
 --- !u!61 &1804296760
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9807,7 +9808,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2027921523
 SpriteRenderer:
@@ -9891,7 +9892,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1508321849}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2056842229
 SpriteRenderer:

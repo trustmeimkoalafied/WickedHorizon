@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // Required for scene switching
 using System.Collections;
 
 public class Door : MonoBehaviour
@@ -8,21 +9,22 @@ public class Door : MonoBehaviour
     private static bool isTeleporting = false; // Shared flag to prevent back-and-forth teleportation
 
     [Header("Door Lock Settings")]
-    [SerializeField] private bool isLocked = true;  // Initially locked
-    [SerializeField] private GameObject lockVisualCue;  // Visual cue for locked state
-    [SerializeField] private AudioClip unlockSound;  // Sound to play when the door is unlocked
-    private bool isSpecialDoor = true;  // Flag to identify if this door is the special locked door
+    [SerializeField] private bool isLocked = true; // Initially locked
+    [SerializeField] private AudioClip unlockSound; // Sound to play when the door is unlocked
+    [SerializeField] private bool isSpecialDoor = false; // Flag to identify if this door triggers the end scene
 
     [Header("Visual Cue")]
     [SerializeField] private Sprite visualCueSprite; // Reference to a Sprite asset for the visual cue
-    [SerializeField] private GameObject visualCuePrefab; // Optional: Reference to a prefab for complex cues
     private GameObject instantiatedCue; // To store the instantiated visual cue
+
+    [Header("Ending Scene Settings")]
+    [SerializeField] private string endingSceneName = "EndingScene"; // Name of the ending scene
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         CreateVisualCue(); // Dynamically create the visual cue
-        UpdateDoorState();  // Update the door state at the start
+        UpdateDoorState(); // Update the door state at the start
     }
 
     private void Update()
@@ -37,7 +39,11 @@ public class Door : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !isTeleporting)
         {
-            if (!isLocked)
+            if (isSpecialDoor)
+            {
+                HandleSpecialDoor(collision);
+            }
+            else if (!isLocked)
             {
                 StartCoroutine(TeleportWithCooldown(collision));
             }
@@ -45,6 +51,19 @@ public class Door : MonoBehaviour
             {
                 Debug.Log("The door is locked. Interact with all NPCs first.");
             }
+        }
+    }
+
+    private void HandleSpecialDoor(Collider2D collision)
+    {
+        if (!isLocked)
+        {
+            Debug.Log("Special door triggered. Loading ending scene...");
+            SceneManager.LoadScene(endingSceneName); // Switch to the ending scene
+        }
+        else
+        {
+            Debug.Log("The special door is locked. Collect all NPCs to proceed.");
         }
     }
 
@@ -68,37 +87,29 @@ public class Door : MonoBehaviour
         isTeleporting = false; // Re-enable teleportation
     }
 
-private void CreateVisualCue()
-{
-    if (visualCuePrefab != null)
+    private void CreateVisualCue()
     {
-        instantiatedCue = Instantiate(visualCuePrefab, transform.position, Quaternion.identity);
-        instantiatedCue.transform.SetParent(transform); // Attach to the door
-        instantiatedCue.transform.localPosition = new Vector3(0, 2.22f, 0); // Adjusted position
+        if (visualCueSprite != null)
+        {
+            instantiatedCue = new GameObject("VisualCue");
+            instantiatedCue.transform.position = transform.position;
+            instantiatedCue.transform.SetParent(transform);
+
+            SpriteRenderer spriteRenderer = instantiatedCue.AddComponent<SpriteRenderer>();
+            spriteRenderer.sprite = visualCueSprite;
+
+            // Set the sorting layer to "Objects"
+            spriteRenderer.sortingLayerName = "Objects";
+
+            instantiatedCue.transform.localPosition = new Vector3(0, 2.22f, 0); // Adjusted position
+        }
     }
-    else if (visualCueSprite != null)
-    {
-        instantiatedCue = new GameObject("VisualCue");
-        instantiatedCue.transform.position = transform.position;
-        instantiatedCue.transform.SetParent(transform);
-
-        SpriteRenderer spriteRenderer = instantiatedCue.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = visualCueSprite;
-
-        // Set the sorting layer to "Objects"
-        spriteRenderer.sortingLayerName = "Objects";
-
-        instantiatedCue.transform.localPosition = new Vector3(0, 2.22f, 0); // Adjusted position
-    }
-}
-
-
 
     private void UpdateDoorState()
     {
-        if (lockVisualCue != null)
+        if (instantiatedCue != null)
         {
-            lockVisualCue.SetActive(isLocked); // Show or hide based on lock state
+            instantiatedCue.SetActive(isLocked); // Show or hide the visual cue based on lock state
         }
     }
 
@@ -153,7 +164,7 @@ private void CreateVisualCue()
             audioSource.PlayOneShot(unlockSound);
         }
 
-        UpdateDoorState();
+        UpdateDoorState(); // Hides the visual cue
         Debug.Log("The door has been unlocked!");
     }
 
