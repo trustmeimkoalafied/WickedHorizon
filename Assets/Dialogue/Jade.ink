@@ -39,11 +39,6 @@ Community members are left on edge after the disappearance of 12-year old Russel
                 Look around, Jade. He's not above kidnapping, who knows what else he'll do? Let's go. #speaker:You #layout:left #audio:celeste_low
             ** [Maybe]
                 Jade... I don't know. We can try if that's what it comes down to. Let's focus on getting out without getting caught. #speaker:You #layout:left #audio:celeste_low
-- Ok... we can do this. Keep your head on a swivel, I think I hear him walking around somewhere. YOUR CURRENT EVIL LEVEL: {evilCounter} #speaker:Jade #layout:left #audio:animal_crossing_high
+- Ok... we can do this. Keep your head on a swivel, I think I hear him walking around somewhere.#speaker:Jade #layout:left #audio:animal_crossing_high
 ~ jadeInteracted = 1
--> checks
-
-=== checks ===
-YOUR CURRENT EVIL LEVEL: {evilCounter} #speaker:Alex #layout:left #audio:animal_crossing_mid
-YOUR CURRENT JADE VARIABLE: {jadeInteracted}
 -> END

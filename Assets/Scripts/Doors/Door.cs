@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Required for scene switching
 using System.Collections;
 
 public class Door : MonoBehaviour
@@ -9,22 +8,25 @@ public class Door : MonoBehaviour
     private static bool isTeleporting = false; // Shared flag to prevent back-and-forth teleportation
 
     [Header("Door Lock Settings")]
-    [SerializeField] private bool isLocked = true; // Initially locked
-    [SerializeField] private AudioClip unlockSound; // Sound to play when the door is unlocked
-    [SerializeField] private bool isSpecialDoor = false; // Flag to identify if this door triggers the end scene
+    [SerializeField] private bool isLocked = true;  // Initially locked
+    [SerializeField] private AudioClip unlockSound;  // Sound to play when the door is unlocked
+    [SerializeField] private bool isSpecialDoor = true;  // Flag to identify if this door is the special locked door
 
     [Header("Visual Cue")]
     [SerializeField] private Sprite visualCueSprite; // Reference to a Sprite asset for the visual cue
     private GameObject instantiatedCue; // To store the instantiated visual cue
 
-    [Header("Ending Scene Settings")]
-    [SerializeField] private string endingSceneName = "EndingScene"; // Name of the ending scene
+    [Header("Objects to Destroy")]
+    [SerializeField] private GameObject[] objectsToDestroy;  // Array of game objects to destroy upon triggering the special door
+
+    [Header("Dialogue Scene")]
+    [SerializeField] private TextAsset endDialogueFile;  // Reference to the Ink JSON file for the end scene
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         CreateVisualCue(); // Dynamically create the visual cue
-        UpdateDoorState(); // Update the door state at the start
+        UpdateDoorState();  // Update the door state at the start
     }
 
     private void Update()
@@ -39,31 +41,23 @@ public class Door : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !isTeleporting)
         {
-            if (isSpecialDoor)
+            if (!isLocked)
             {
-                HandleSpecialDoor(collision);
-            }
-            else if (!isLocked)
-            {
-                StartCoroutine(TeleportWithCooldown(collision));
+                if (isSpecialDoor)
+                {
+                    // Special door behavior: Destroy objects and trigger dialogue
+                    TriggerEndScene();
+                }
+                else
+                {
+                    // Regular door behavior: Teleport player
+                    StartCoroutine(TeleportWithCooldown(collision));
+                }
             }
             else
             {
                 Debug.Log("The door is locked. Interact with all NPCs first.");
             }
-        }
-    }
-
-    private void HandleSpecialDoor(Collider2D collision)
-    {
-        if (!isLocked)
-        {
-            Debug.Log("Special door triggered. Loading ending scene...");
-            SceneManager.LoadScene(endingSceneName); // Switch to the ending scene
-        }
-        else
-        {
-            Debug.Log("The special door is locked. Collect all NPCs to proceed.");
         }
     }
 
@@ -164,8 +158,33 @@ public class Door : MonoBehaviour
             audioSource.PlayOneShot(unlockSound);
         }
 
-        UpdateDoorState(); // Hides the visual cue
+        UpdateDoorState();
         Debug.Log("The door has been unlocked!");
+    }
+
+    private void TriggerEndScene()
+    {
+        // Destroy specified objects
+        foreach (GameObject obj in objectsToDestroy)
+        {
+            if (obj != null)
+            {
+                Destroy(obj);
+            }
+        }
+
+        Debug.Log("Triggering the end scene!");
+
+        // Trigger the end dialogue using the EnterDialogueMode method
+        if (endDialogueFile != null)
+        {
+            // Call EnterDialogueMode to start the dialogue
+            DialogueManager.GetInstance().EnterDialogueMode(endDialogueFile, null, null); // Pass null for emoteAnimator and npcGameObject if not used
+        }
+        else
+        {
+            Debug.LogWarning("End dialogue file not set.");
+        }
     }
 
     private void OnDestroy()

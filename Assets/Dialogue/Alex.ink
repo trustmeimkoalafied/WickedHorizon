@@ -35,11 +35,6 @@ Hey, I did find this weird note under the tub: #speaker:Alex #layout:left #audio
     * [Blow it off]
         ~ evilCounter += 1
         Are we listening to crazy people and their rants now? We're wasting time when we could be leaving. Let's go. #speaker:You #layout:left #audio:celeste_low
-- Alright… I’ll follow you, but… let’s be careful.
+- Alright… I’ll follow you, but… let’s be careful. #speaker:Alex #layout:left #audio:animal_crossing_mid
 ~ alexInteracted = 1
--> checks
-
-=== checks ===
-YOUR CURRENT EVIL LEVEL: {evilCounter} #speaker:Alex #layout:left #audio:animal_crossing_mid
-YOUR CURRENT ALEX VARIABLE: {alexInteracted}
 -> END
