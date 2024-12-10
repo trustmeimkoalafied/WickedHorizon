@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StalkerBehavior : MonoBehaviour
 {
@@ -16,8 +17,12 @@ public class StalkerBehavior : MonoBehaviour
     [SerializeField] private float chaseSpeed = 4f;
     [SerializeField] private GameObject[] restrictedDoors;
 
-    private StalkerState currentState = StalkerState.Wandering;
+    // Respawn system
+    [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField] private int maxRespawns = 3;
+    private int currentRespawns = 0;
 
+    private StalkerState currentState = StalkerState.Wandering;
     private Vector2 wanderDirection = Vector2.left; // Initial wander direction (to the right)
     private DialogueManager dialogueManager;  // Reference to the DialogueManager
 
@@ -114,8 +119,14 @@ private void Wander()
 
 private void OnTriggerEnter2D(Collider2D other)
 {
-    if (other.CompareTag("Door") && !IsRestrictedDoor(other.gameObject) && currentState != StalkerState.Chasing)
-    {
+        if (other.CompareTag("Player"))
+        {
+            HandlePlayerCollision();
+	    Debug.Log("Player touched by Stalker!");
+        }
+        else if (other.CompareTag("Door") && !IsRestrictedDoor(other.gameObject) && currentState != StalkerState.Chasing)
+       {
+
         if (Random.Range(0f, 1f) > 0.5f)
         {
             Door doorScript = other.GetComponent<Door>();
@@ -127,6 +138,22 @@ private void OnTriggerEnter2D(Collider2D other)
     }
 }
 
+    private void HandlePlayerCollision()
+    {
+        if (currentRespawns < maxRespawns)
+        {
+            // Respawn player
+            player.position = playerSpawnPoint.position;
+            currentRespawns++;
+            Debug.Log($"Player respawned. Remaining lives: {maxRespawns - currentRespawns}");
+        }
+        else
+        {
+            // Load GameOver scene
+            Debug.Log("Player out of lives. Loading GameOver scene.");
+            SceneManager.LoadScene("GameOver");
+        }
+    }
 
     private IEnumerator TeleportWithCooldown(Door door)
     {
