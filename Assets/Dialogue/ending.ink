@@ -1,4 +1,5 @@
 INCLUDE globals.ink
+~ isEndingDialogue = true
 #speaker:You #layout:left #audio:celeste_low
 Keep running! We just have to make it to the edge of the woods.
 W-wait! Guys, let's take a break. I really can't r-run anymore. I think we've made it far enough away. #speaker:Liam #layout:left #audio:celeste_high
@@ -29,7 +30,8 @@ Oh my god. Are you okay? What did he do to you? That sick freak! #speaker:Jade #
 // you tell your friends to run before you do something you regret
 // the hunger kills you
 #speaker:!!! #layout:left #audio:animal_crossing_low
-<b>YOUR BODY IS STARTING TO EAT ITSELF. THE HUNGER. THE HUNGER IS UNBEARABLE. IT'S TIME TO FINISH WHAT YOU STARTED. DO IT NOW. DO IT NOW. DO ITNOW DOITNOW DOITNOWDOITNOWDOITNOW </b>
+<b>YOUR BODY IS STARTING TO EAT ITSELF. THE HUNGER. THE HUNGER IS UNBEARABLE. IT'S</b>
+<b>TIME TO FINISH WHAT YOU STARTED. DO IT NOW. DO IT NOW. DO ITNOW DOITNOW DOITNOWDOITNOWDOITNOW </b>
     * [Stop yourself.]
         #speaker:!!! #layout:left #audio:animal_crossing_low
         <b>NO. NO! THE HUNGER. IT WILL KILL YOU! YOU HAVE MADE A STUPID CHOICE.</b>

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -132,13 +133,22 @@ private void CheckNpcCollection()
 
 private bool GetNpcCollectionStatus(string npcVariable)
 {
-    	// Get the value of the variable from Ink
-    	Ink.Runtime.Object npcStatus = currentStory.variablesState.GetVariableWithName(npcVariable);
-    	Debug.Log($"NPC {npcVariable} status: {npcStatus}");
+    // Use GetVariableState to retrieve the value of the NPC variable
+    Ink.Runtime.Object npcStatus = GetVariableState(npcVariable);
 
-    	// Check if the npcStatus is not null and equals 1 (i.e., the player has interacted with the NPC)
-    	return npcStatus != null && npcStatus.Equals(new Ink.Runtime.IntValue(1));
+    // Check if the npcStatus is not null and equals 1 (i.e., the player has interacted with the NPC)
+    if (npcStatus != null && npcStatus is Ink.Runtime.IntValue intValue)
+    {
+        Debug.Log($"NPC {npcVariable} status: {intValue.value}");
+        return intValue.value == 1;
+    }
+    else
+    {
+        Debug.LogWarning($"NPC {npcVariable} status could not be retrieved or is not an IntValue.");
+        return false;
+    }
 }
+
 
 
 
@@ -222,17 +232,22 @@ private IEnumerator ExitDialogueMode()
     dialogueText.text = "";
 
     // Trigger the NPC check when the dialogue ends
-    DialogueTrigger currentNpcTrigger = currentNpc.GetComponent<DialogueTrigger>();
-    if (currentNpcTrigger != null)
-    {
-        currentNpcTrigger.TriggerOnDialogueFinished();
-    }
+    DialogueTrigger currentNpcTrigger = currentNpc?.GetComponent<DialogueTrigger>();
+    currentNpcTrigger?.TriggerOnDialogueFinished();
 
     CheckNpcCollection();
+
+    // Check if this is the ending dialogue using the GetVariableState method
+    Ink.Runtime.Object isEndingDialogueObj = GetVariableState("isEndingDialogue");
+    if (isEndingDialogueObj is Ink.Runtime.BoolValue isEndingDialogue && isEndingDialogue.value)
+    {
+        SceneManager.LoadScene("GameOver");
+    }
 
     // go back to default audio
     SetCurrentAudioInfo(defaultAudioInfo.id);
 }
+
 
 
 private void OnDialogueFinished()

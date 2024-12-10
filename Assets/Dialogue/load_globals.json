@@ -1,1 +1,1 @@
-﻿{"inkVersion":21,"root":[["\n",["done",{"#f":5,"#n":"g-0"}],null],"done",{"global decl":["ev",0,{"VAR=":"evilCounter"},0,{"VAR=":"alexInteracted"},0,{"VAR=":"liamInteracted"},0,{"VAR=":"jadeInteracted"},"/ev","end",null],"#f":1}],"listDefs":{}}
+﻿{"inkVersion":21,"root":[["\n",["done",{"#f":5,"#n":"g-0"}],null],"done",{"global decl":["ev",0,{"VAR=":"evilCounter"},0,{"VAR=":"alexInteracted"},0,{"VAR=":"liamInteracted"},0,{"VAR=":"jadeInteracted"},false,{"VAR=":"isEndingDialogue"},"/ev","end",null],"#f":1}],"listDefs":{}}
