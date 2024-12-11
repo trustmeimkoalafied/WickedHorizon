@@ -10,13 +10,16 @@ EditorBuildSettings:
     guid: eb5cb6e5bb96c7d4886799de95d35164
   - enabled: 1
     path: Assets/Scenes/Rules.unity
-    guid: 193cb79c801f3d642bb3cc0132dc7245
+    guid: b72d9441a1e084bdaae063272fddf1bc
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
