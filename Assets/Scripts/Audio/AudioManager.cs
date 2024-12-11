@@ -8,7 +8,8 @@ public class AudioManager : MonoBehaviour
     private DialogueManager dialogueManager;  // Reference to the DialogueManager
     private StalkerBehavior stalkerBehavior;  // Reference to the StalkerBehavior script
     public Transform player;  // Drag the player object here in the Inspector
-    public float detectionRange = 5f;  // The detection range for the Stalker to be on the same floor
+
+    [SerializeField] private float sameFloorThreshold = 20f;  // The threshold for considering the same floor
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        // Check if the Stalker is on the same floor as the player using raycasting
+        // Check if the Stalker is on the same floor as the player using the threshold
         if (stalkerBehavior != null && IsStalkerOnSameFloor())
         {
             // Stop the background music and play the stalker audio
@@ -67,22 +68,15 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // Function to check if the Stalker is on the same floor as the player using raycasting
+    // Function to check if the Stalker is on the same floor as the player (based on Y position with a threshold)
     private bool IsStalkerOnSameFloor()
     {
-        if (stalkerBehavior != null && player != null)
+        // Compare the absolute difference between Y positions with a threshold
+        if (stalkerBehavior != null && player != null &&
+            Mathf.Abs(stalkerBehavior.transform.position.y - player.position.y) <= sameFloorThreshold)
         {
-            Vector2 directionToPlayer = (player.position - stalkerBehavior.transform.position).normalized;
-
-            // Raycast to detect if there is a clear line of sight to the player on the same floor
-            RaycastHit2D hit = Physics2D.Raycast(stalkerBehavior.transform.position, directionToPlayer, detectionRange, LayerMask.GetMask("Default"));
-
-            // Check if the ray hit the player and is within the detection range (same floor, no obstacles)
-            if (hit.collider != null && hit.collider.transform == player)
-            {
-                return true;  // Stalker is on the same floor and can see the player
-            }
+            return true;
         }
-        return false;  // If no player in range or if there's an obstacle
+        return false;
     }
 }

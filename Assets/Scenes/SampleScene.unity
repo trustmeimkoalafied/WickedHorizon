@@ -1846,7 +1846,7 @@ MonoBehaviour:
   backgroundMusic: {fileID: 8300000, guid: 4729ffdad31b9334abd88e9885338e21, type: 3}
   stalkerAudio: {fileID: 8300000, guid: 2eab172f65605cf4f8d9bc453b88168b, type: 3}
   player: {fileID: 1925176083}
-  detectionRange: 10
+  sameFloorThreshold: 2
 --- !u!1 &446613292
 GameObject:
   m_ObjectHideFlags: 0
